@@ -1,7 +1,7 @@
 # Lottery-Simulation
 
 # Description
--> Will help a person see just how statistically low the chance of winning the jackpot lottery
+- Will help a person see just how statistically low the chance of winning the jackpot lottery
 
 # Features
 - Currently implemented three lottery tickets {Mega Millions, Powerball, SuperLotto}
