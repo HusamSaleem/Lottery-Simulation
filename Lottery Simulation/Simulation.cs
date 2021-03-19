@@ -91,7 +91,7 @@ namespace Lottery_Simulation
                 {
                     excel.WriteToExcel(excelRows[matchingNums]++, matchingNums + 1, ArrayToString(mega.numbers));
 
-                    if (excelRows[matchingNums] == Excel.MAX_ROWS - 48000)
+                    if (excelRows[matchingNums] == Excel.MAX_ROWS - 24000)
                     {
                         excel.Save();
                         Console.WriteLine("\nReached maximum excel row size");
@@ -173,7 +173,7 @@ namespace Lottery_Simulation
                 {
                     excel.WriteToExcel(excelRows[matchingNums]++, matchingNums + 1, ArrayToString(power.numbers));
 
-                    if (excelRows[matchingNums] == Excel.MAX_ROWS - 48000)
+                    if (excelRows[matchingNums] == Excel.MAX_ROWS - 24000)
                     {
                         excel.Save();
                         Console.WriteLine("\nReached maximum excel row size");
@@ -255,7 +255,7 @@ namespace Lottery_Simulation
                 {
                     excel.WriteToExcel(excelRows[matchingNums]++, matchingNums + 1, ArrayToString(super.numbers));
 
-                    if (excelRows[matchingNums] == Excel.MAX_ROWS - 48000)
+                    if (excelRows[matchingNums] == Excel.MAX_ROWS - 24000)
                     {
                         excel.Save();
                         Console.WriteLine("\nReached maximum excel row size");
