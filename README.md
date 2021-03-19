@@ -5,8 +5,8 @@
 
 # Features
 - Currently implemented three lottery tickets {Mega Millions, Powerball, SuperLotto}
-- Basically this program has two options for the user. You can either start simulating an infinite amount of 
-   randomized lottery tickets to see how many draws, and total cost will take to win the jackpot. (WILL NOT WRITE TO EXCEL FILE)
+- Basically this program has two options. You can either start simulating an infinite amount of 
+   randomized lottery tickets to see how many draws, and total cost it will take to win the jackpot. (WILL NOT WRITE TO EXCEL FILE)
 - Other option is that you can simulate a finite amount (1 - 1,000,000) randomized lottery tickets and this 
    will write to an excel file.
 - The excel file will include 7 columns. The first 6 columns are for lottery tickets that matched an "n" amount of numbers
