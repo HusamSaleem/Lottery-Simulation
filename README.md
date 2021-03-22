@@ -18,6 +18,7 @@
 - Pressing '3' During a simulation will Save the simulation (Best used when simulation is paused
 - Pressing '4' Will print some additional information about the simulation. (*Only works when paused*)
 - Pressing '5' will pause, save if possible and start a new simulation of your choosing
+- Not opting to display extra information during a simulation will drastically decrease your run time for a finite simulation and will be able to signifcantly test more in an "infinite" simulation
 
 # Requirements
 - Have Microsoft Excel installed on your computer so you wil be able to see the data from the finite amount of drawings. 
