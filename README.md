@@ -11,6 +11,13 @@
    will write to an excel file.
 - The excel file will include 7 columns. The first 6 columns are for lottery tickets that matched an "n" amount of numbers
       The last column is the winning numbers.
+      
+# Good To know things
+- Pressing '1' During a simulation will pause it
+- Pressing '2' During a simulation will unpause it
+- Pressing '3' During a simulation will Save the simulation (Best used when simulation is paused
+- Pressing '4' Will print some additional information about the simulation. (*Only works when paused*)
+- Pressing '5' will pause, save if possible and start a new simulation of your choosing
 
 # Requirements
 - Have Microsoft Excel installed on your computer so you wil be able to see the data from the finite amount of drawings. 
