@@ -13,7 +13,7 @@ namespace Lottery_Simulation
     {
         static void Main(string[] args)
         {
-            Simulation simulation = new Simulation(@"YOUR EXCEL DIRECTORY PATH");
+            Simulation simulation = new Simulation(@"YOUR DIRECTORY PATH HERE");
             simulation.Start();
         }
     }

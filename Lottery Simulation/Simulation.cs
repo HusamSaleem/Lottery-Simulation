@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Text;
 
 namespace Lottery_Simulation
@@ -30,32 +31,40 @@ namespace Lottery_Simulation
         }
 
         // Tries to see how many draws it takes to get the winning numbers
-        public void SimulateMega(int[] winningMega, int numOfDraws)
+        public void SimulateMega(int[] winningMega, int numOfDraws, bool printInfo)
         {
             int[] excelRows = new int[6];
             if (numOfDraws != -1)
             {
+                excel.UseExcel(true);
                 excel.SetPath(excelDirPath);
                 excel.CreateNewExcelFile("Mega Millions");
-                excel.UseExcel(true);
 
                 excel.WriteToExcel(2, 8, ArrayToString(winningMega)); // Save the winning numbers at the last Column
                 for (int i = 0; i < excelRows.Length; i++)
                 {
                     excelRows[i] = 2;
                 }
-            } else
+            }
+            else
             {
                 excel.UseExcel(false);
             }
 
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+
             int totalDrawings = 0;
             Ticket mega = new MegaMillions();
             mega.DrawRandomNumbers();
-            mega.PrintNumbers();
-            Console.Write($"Count of matching Numbers: {mega.GetMatchingNumbersCount(winningMega)}\n");
-            totalDrawings++;
 
+            if (printInfo)
+            {
+                mega.PrintNumbers();
+                Console.Write($"Count of matching Numbers: {mega.GetMatchingNumbersCount(winningMega)}\n");
+            }
+
+            totalDrawings++;
             bool saved = false;
             while (!mega.Equal(winningMega) && (totalDrawings < numOfDraws || numOfDraws == -1))
             {
@@ -82,7 +91,6 @@ namespace Lottery_Simulation
                 }
 
                 mega.DrawRandomNumbers();
-                mega.PrintNumbers();
 
                 int matchingNums = mega.GetMatchingNumbersCount(winningMega);
 
@@ -98,11 +106,19 @@ namespace Lottery_Simulation
                         break;
                     }
                 }
-                Console.Write($"Count of matching Numbers: {matchingNums}\n");
+                if (printInfo)
+                {
+                    mega.PrintNumbers();
+                    Console.Write($"Count of matching Numbers: {matchingNums}\n");
+                }
                 totalDrawings++;
             }
 
             Console.WriteLine($"\nTotal number of drawings: {totalDrawings}. Total Cost: ${totalDrawings * mega.cost}");
+
+            stopWatch.Stop();
+            long duration = stopWatch.ElapsedMilliseconds;
+            Console.WriteLine($"This simulation took {duration} Miliseconds");
 
             if (numOfDraws != -1)
             {
@@ -111,30 +127,37 @@ namespace Lottery_Simulation
             SimulationFinished();
         }
 
-        public void SimulatePower(int[] winningPower, int numOfDraws)
+        public void SimulatePower(int[] winningPower, int numOfDraws, bool printInfo)
         {
             int[] excelRows = new int[6];
             if (numOfDraws != -1)
             {
+                excel.UseExcel(true);
                 excel.SetPath(excelDirPath);
                 excel.CreateNewExcelFile("Powerball");
-                excel.UseExcel(true);
 
                 excel.WriteToExcel(2, 8, ArrayToString(winningPower)); // Save the winning numbers at the last Column
                 for (int i = 0; i < excelRows.Length; i++)
                 {
                     excelRows[i] = 2;
                 }
-            } else
+            }
+            else
             {
                 excel.UseExcel(false);
             }
 
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+
             int totalDrawings = 0;
             Ticket power = new Powerball();
             power.DrawRandomNumbers();
-            power.PrintNumbers();
-            Console.Write($"Count of matching Numbers: {power.GetMatchingNumbersCount(winningPower)}\n");
+            if (printInfo)
+            {
+                power.PrintNumbers();
+                Console.Write($"Count of matching Numbers: {power.GetMatchingNumbersCount(winningPower)}\n");
+            }
             totalDrawings++;
 
             bool saved = false;
@@ -164,7 +187,6 @@ namespace Lottery_Simulation
                 }
 
                 power.DrawRandomNumbers();
-                power.PrintNumbers();
 
                 int matchingNums = power.GetMatchingNumbersCount(winningPower);
 
@@ -181,11 +203,19 @@ namespace Lottery_Simulation
                     }
                 }
 
-                Console.Write($"Count of matching Numbers: {matchingNums}\n");
+                if (printInfo)
+                {
+                    power.PrintNumbers();
+                    Console.Write($"Count of matching Numbers: {power.GetMatchingNumbersCount(winningPower)}\n");
+                }
                 totalDrawings++;
             }
 
             Console.WriteLine($"\nTotal number of drawings: {totalDrawings}. Total Cost: ${totalDrawings * power.cost}");
+
+            stopWatch.Stop();
+            long duration = stopWatch.ElapsedMilliseconds;
+            Console.WriteLine($"This simulation took {duration} Miliseconds");
 
             if (numOfDraws != -1)
             {
@@ -194,32 +224,40 @@ namespace Lottery_Simulation
             SimulationFinished();
         }
 
-        public void SimulateSuper(int[] winningSuper, int numOfDraws)
+        public void SimulateSuper(int[] winningSuper, int numOfDraws, bool printInfo)
         {
             int[] excelRows = new int[6];
             if (numOfDraws != -1)
             {
+                excel.UseExcel(true);
                 excel.SetPath(excelDirPath);
                 excel.CreateNewExcelFile("SuperLotto");
-                excel.UseExcel(true);
 
                 excel.WriteToExcel(2, 8, ArrayToString(winningSuper)); // Save the winning numbers at the last Column
                 for (int i = 0; i < excelRows.Length; i++)
                 {
                     excelRows[i] = 2;
                 }
-            } else
+            }
+            else
             {
                 excel.UseExcel(false);
             }
 
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+
             int totalDrawings = 0;
             Ticket super = new SuperLotto();
             super.DrawRandomNumbers();
-            super.PrintNumbers();
-            Console.Write($"Count of matching Numbers: {super.GetMatchingNumbersCount(winningSuper)}\n");
-            totalDrawings++;
 
+            if (printInfo)
+            {
+                super.PrintNumbers();
+                Console.Write($"Count of matching Numbers: {super.GetMatchingNumbersCount(winningSuper)}\n");
+            }
+
+            totalDrawings++;
             bool saved = false; // Save only once when needed.
             while (!super.Equal(winningSuper) && (totalDrawings < numOfDraws || numOfDraws == -1))
             {
@@ -246,7 +284,6 @@ namespace Lottery_Simulation
                 }
 
                 super.DrawRandomNumbers();
-                super.PrintNumbers();
 
                 int matchingNums = super.GetMatchingNumbersCount(winningSuper);
 
@@ -263,11 +300,19 @@ namespace Lottery_Simulation
                     }
                 }
 
-                Console.Write($"Count of matching Numbers: {matchingNums}\n");
+                if (printInfo)
+                {
+                    super.PrintNumbers();
+                    Console.Write($"Count of matching Numbers: {super.GetMatchingNumbersCount(winningSuper)}\n");
+                }
                 totalDrawings++;
             }
 
             Console.WriteLine($"\nTotal number of drawings: {totalDrawings}. Total Cost: ${totalDrawings * super.cost}");
+
+            stopWatch.Stop();
+            long duration = stopWatch.ElapsedMilliseconds;
+            Console.WriteLine($"This simulation took {duration} Miliseconds");
 
             if (numOfDraws != -1)
             {
@@ -353,32 +398,35 @@ namespace Lottery_Simulation
             else if (KP.Key == ConsoleKey.NumPad1)
             {
                 int numOfDrawings = GetNumberOfDrawingsNeeded();
+                bool printExtraInfo = UserWantsExtraInfo();
 
                 this.currentLotteryName = "Mega Millions";
                 SimulationVarManager.runSimulation = true;
                 SimulationVarManager.simulationInProgress = true;
                 StartListeningForCommands();
-                SimulateMega(WINNING_MEGA, numOfDrawings);
+                SimulateMega(WINNING_MEGA, numOfDrawings, printExtraInfo);
             }
             else if (KP.Key == ConsoleKey.NumPad2)
             {
                 int numOfDrawings = GetNumberOfDrawingsNeeded();
+                bool printExtraInfo = UserWantsExtraInfo();
 
                 this.currentLotteryName = "Powerball";
                 SimulationVarManager.runSimulation = true;
                 SimulationVarManager.simulationInProgress = true;
                 StartListeningForCommands();
-                SimulatePower(WINNING_POWER, numOfDrawings);
+                SimulatePower(WINNING_POWER, numOfDrawings, printExtraInfo);
             }
             else if (KP.Key == ConsoleKey.NumPad3)
             {
                 int numOfDrawings = GetNumberOfDrawingsNeeded();
+                bool printExtraInfo = UserWantsExtraInfo();
 
                 this.currentLotteryName = "SuperLotto";
                 SimulationVarManager.runSimulation = true;
                 SimulationVarManager.simulationInProgress = true;
                 StartListeningForCommands();
-                SimulateSuper(WINNING_SUPER, numOfDrawings);
+                SimulateSuper(WINNING_SUPER, numOfDrawings, printExtraInfo);
             }
             else if (KP.Key == ConsoleKey.NumPad9)
             {
@@ -480,5 +528,29 @@ namespace Lottery_Simulation
             }
         }
 
+        private bool UserWantsExtraInfo()
+        {
+            Console.WriteLine("Do you want the simulation to print the information along the way? (Y/N)");
+            Console.WriteLine("* SAYING YES WILL DRASTICALLY INCREASE THE TIME TO FINISH THE SIMULATION *");
+
+            
+            while (true)
+            {
+                string input = Console.ReadLine().ToString();
+
+                if (input.ToLower().Equals("y"))
+                {
+                    return true;
+                }
+                else if (input.ToLower().Equals("n"))
+                {
+                    return false;
+                }
+                else
+                {
+                    Console.WriteLine("Please only enter a 'Y' for yes or 'N' for no.");
+                }
+            }
+        }
     }
 }
