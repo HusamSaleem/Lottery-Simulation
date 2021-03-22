@@ -42,6 +42,7 @@ namespace Lottery_Simulation
         {
             if (useExcel)
             {
+                Console.WriteLine("Saving Data, Please be patient for larger simulations.");
                 excel.Save();
                 Console.WriteLine("\nSaved data successfully!");
             }
