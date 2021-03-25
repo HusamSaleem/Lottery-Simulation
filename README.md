@@ -25,7 +25,7 @@
 - Have a full directory path of where you want the Excel files to be stored at
 
 # Example to run this simulation
-- Simulation simulation = new Simulation(@"YOUR EXCEL DIRECTORY FULL PATH GOES HERE (WHATEVER PATH YOU WANT)");
+- Simulation simulation = new Simulation(@"A PATH WHERE YOU WANT YOUR EXCEL FILES TO BE SAVED (WHATEVER VALID PATH YOU WANT)");
    simulation.Start();
 
 # Known Issues
